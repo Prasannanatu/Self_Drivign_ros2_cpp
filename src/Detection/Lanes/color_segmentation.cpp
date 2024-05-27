@@ -4,7 +4,7 @@
 
 cv::Mat HLS, src;
 int Hue_Low = 0, Lit_Low = 225, Sat_Low = 0;
-int Hue_Low_Y = 20, Hue_High_Y = 30, Lit_Low_Y = 100, Sat_Low_Y = 100;
+int Hue_Low_Y = 30, Hue_High_Y = 50, Lit_Low_Y = 100, Sat_Low_Y = 100;
 
 cv::Scalar lower_bound(Hue_Low, Lit_Low, Sat_Low);
 cv::Scalar upper_bound(180, 255, 255);
@@ -45,7 +45,7 @@ void MaskExtract() {
 cv::Mat ClrSegment(cv::Mat& input_image, cv::Mat& output_image, cv::Scalar lower_bound, cv::Scalar upper_bound) {
     cv::Mat hsv_image;
     cv::Mat dilated_image;
-    cv::cvtColor(input_image, hsv_image, cv::COLOR_BGR2HSV);
+    cv::cvtColor(input_image, hsv_image, cv::COLOR_BGR2HLS_FULL);
     cv::inRange(hsv_image, lower_bound, upper_bound, dilated_image);
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
     cv::morphologyEx(dilated_image, output_image, cv::MORPH_DILATE, kernel);
