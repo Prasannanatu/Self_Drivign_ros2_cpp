@@ -55,17 +55,22 @@ def generate_launch_description():
         package='self_driving_cpp',
         executable='lights_spawner.bash',
         name='Lights_installer',
-        output='screen'),
+        output='screen',
+        prefix='gdb -ex=run --args',
+        ),
+        
       Node(
           package='self_driving_cpp',
           executable='video_recorder',
           name='video_recorder',
-          output='screen'
+          output='screen',
+          prefix='gdb -ex=run --args',
       ),
       Node(
           package='self_driving_cpp',
           executable='computer_vision_node',
           name='computer_vision_node',
-          output='screen'
+          output='screen',
+          prefix='gdb -ex=run --args',
       ),
   ])

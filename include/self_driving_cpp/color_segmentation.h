@@ -19,6 +19,9 @@ void OnTrackbarChange(int, void*);
 void MaskExtract();
 void createTrackbars();
 cv::Mat ClrSegment(cv::Mat& input_image, cv::Mat& output_image, cv::Scalar lower_bound, cv::Scalar upper_bound);
-void SegmentLanes(cv::Mat& input_image,int minArea);
-
+// std::tuple<std::tuple<cv::Mat ,cv::Mat>, std::tuple<cv::Mat ,cv::Mat, std::vector<cv::Point>>> SegmentLanes(cv::Mat& input_image, int minArea);
+void SegmentLanes(cv::Mat& input_image, int minArea);
+std::pair<cv::Mat ,cv::Mat> GetMask_and_Edge_for_largerObject(cv::Mat& input_image, cv::Mat& Mask, int minArea);
+std::tuple<cv::Mat ,cv::Mat> SegmentMidLanes(cv::Mat& input_image, cv::Mat& Mask, int minArea);
+std::tuple<cv::Mat ,cv::Mat, std::vector<cv::Point>> SegmentOuterLanes(cv::Mat& input_image, cv::Mat& Mask, int minArea);
 #endif // COLOR_SEGMENTATION_HPP
